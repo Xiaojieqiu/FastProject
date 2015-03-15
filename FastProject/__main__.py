@@ -366,14 +366,23 @@ if(USE_SIGNATURES):
     
     #%% Output top N plots
 	#Change to output all plots
-    N_PLOTS = sig_proj_matrix.size();;
+    MAX_N = sig_proj_matrix.size;
+    if(MAX_N > 100):
+        x1 = np.arange(100);
+        x2 = np.arange(MAX_N);
+        np.random.shuffle(x2);
+        x2 = x2[0:100];
+        N_PLOTS = np.concatenate((x1, x2));
+    else:
+        N_PLOTS = np.arange(MAX_N);
+        
     flat_indices = np.argsort(sig_proj_matrix_p, axis=None);
     row_indices, col_indices = np.unravel_index(flat_indices, sig_proj_matrix_p.shape);
     
     print();
     print('Outputting Projection-Signature Plots to File');
-    pp = ProgressBar(N_PLOTS);
-    for i in range(N_PLOTS):
+    pp = ProgressBar(N_PLOTS.size);
+    for i in N_PLOTS:
         r = row_indices[i];
         c = col_indices[i];
         

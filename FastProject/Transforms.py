@@ -109,6 +109,8 @@ def create_false_neg_map(data, genes, housekeeping_file=""):
         
     #Fit a function mapping mu to gammas
 
+    from scipy.optimize import minimize;
+    
     def func(xvals, x0, a, L, H):
         return L + (H-L)/(1 + np.exp((xvals-x0)*a));
 
