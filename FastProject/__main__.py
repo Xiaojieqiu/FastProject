@@ -365,7 +365,8 @@ if(USE_SIGNATURES):
     
     
     #%% Output top N plots
-    N_PLOTS = 30;
+	#Change to output all plots
+    N_PLOTS = sig_proj_matrix.size();;
     flat_indices = np.argsort(sig_proj_matrix_p, axis=None);
     row_indices, col_indices = np.unravel_index(flat_indices, sig_proj_matrix_p.shape);
     

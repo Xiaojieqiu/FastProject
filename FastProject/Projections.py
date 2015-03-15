@@ -63,26 +63,26 @@ def generate_projections(data):
           
     """
     
-    pbar = ProgressBar(7);
+    pbar = ProgressBar(1);
     
     projections = dict();
     
-    # PCA
+    # # PCA
     
-    pca = PCA();
-    result = pca.fit_transform(data.T);
-    result = result[:,[0,1]]
+    # pca = PCA();
+    # result = pca.fit_transform(data.T);
+    # result = result[:,[0,1]]
   
-    projections['PCA'] = result;
-    pbar.update();
+    # projections['PCA'] = result;
+    # pbar.update();
       
-    # ICA
+    # # ICA
     
-    ica = FastICA(n_components = 2);
-    result = ica.fit_transform(data.T);
+    # ica = FastICA(n_components = 2);
+    # result = ica.fit_transform(data.T);
     
-    projections['ICA'] = result;
-    pbar.update();
+    # projections['ICA'] = result;
+    # pbar.update();
     
     # tSNE, but with built-in from sklearn
     
@@ -92,37 +92,37 @@ def generate_projections(data):
     projections['tSNE'] = result;
     pbar.update();
     
-    # ISOMap
+    # # ISOMap
     
-    model = Isomap(n_neighbors = 4, n_components = 2);
-    result = model.fit_transform(data.T);
+    # model = Isomap(n_neighbors = 4, n_components = 2);
+    # result = model.fit_transform(data.T);
     
-    projections['ISOMap'] = result;
-    pbar.update();
+    # projections['ISOMap'] = result;
+    # pbar.update();
     
-    # LLE
+    # # LLE
     
-    model = LocallyLinearEmbedding(n_neighbors = 2, n_components=2)
-    result = model.fit_transform(data.T);
+    # model = LocallyLinearEmbedding(n_neighbors = 2, n_components=2)
+    # result = model.fit_transform(data.T);
     
-    projections['LLE'] = result;
-    pbar.update();
+    # projections['LLE'] = result;
+    # pbar.update();
     
-    # MDS
+    # # MDS
     
-    model = MDS(n_components=2)
-    result = model.fit_transform(data.T);
+    # model = MDS(n_components=2)
+    # result = model.fit_transform(data.T);
     
-    projections['MDS'] = result;
-    pbar.update();
+    # projections['MDS'] = result;
+    # pbar.update();
         
-    # Spectral Embedding
+    # # Spectral Embedding
     
-    model = SpectralEmbedding(n_components=2)
-    result = model.fit_transform(data.T);
+    # model = SpectralEmbedding(n_components=2)
+    # result = model.fit_transform(data.T);
     
-    projections['Spectral Embedding'] = result;
-    pbar.update();
+    # projections['Spectral Embedding'] = result;
+    # pbar.update();
     
     # Add new projections here!
 
